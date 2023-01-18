@@ -43,7 +43,12 @@ class HomeScreen extends StatelessWidget {
         }),
         ElevatedButton(onPressed: (){
           myController.increment();
-        }, child: Text("increment"))
+        }, child: Text("increment")),
+        TextField(
+          onChanged: (val){
+            myController.increment();
+          },
+        )
       ],
     ),);
   }
