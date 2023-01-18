@@ -71,11 +71,11 @@ class HomeScreen extends StatelessWidget {
 
 class Student{
 
-  // var name= "Tom".obs; //individual value is reactive 
-  // var age =25.obs;
+   var name= "Tom".obs; //individual value is reactive 
+   var age =25.obs;
 
-  var name;
-  var age;
+  // var name;
+  // var age;
 
-  Student({ this.name, this.age});
+ // Student({ this.name, this.age});
 }
