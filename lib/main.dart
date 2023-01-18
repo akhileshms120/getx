@@ -1,16 +1,13 @@
 // 
 
 
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_navigation/get_navigation.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
-import 'package:second_project/student.dart';
+import 'package:second_project/myController.dart';
 
-//////////////////////////////////state Manger///////////////////
-///
-///
 void main(){
   runApp(MyApp());
 }
@@ -25,57 +22,29 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 class HomeScreen extends StatelessWidget {
-
-  var student=Student();
- 
- //var countNumber=RxString(''); //one method
-//  var countNumber=Rx<String>(''); //second method
-
-// var number=RxNum(0);
-
- var count =0.obs;
-
- var name ="Tom".obs;
-
- increment(){
-  count++;
-}
-
- decrement(){
-  count--;
-}
+  
+  MyController myController =Get.put(MyController());
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("State Mangament")),
-      body: Column(
-        children: [
-          Obx(()=>Text("Count Value is $count  $name")),
-          ElevatedButton(onPressed: (){
-            increment();
-          }, child: Text("Increment")),
-             ElevatedButton(onPressed: (){
-              decrement();
-             }, child: Text("Decrement")),
-               ElevatedButton(onPressed: (){
-               
-               Get.to(()=>StudentScreen());
-             }, child: Text("Student Page"))
-        ],
-      ),
-    );
+    return Scaffold(appBar: AppBar(title: Text("UNIQUE ID")),body: Column(
+      children: [
+        GetBuilder<MyController>(
+          id: 'txCount',//unique id
+          builder: (controller){
+          return Text("The value is ${controller.count}");
+        }),
+        GetBuilder<MyController>(
+          
+          builder: (controller){
+          return Text("The value is ${controller.count}");
+        }),
+        ElevatedButton(onPressed: (){
+          myController.increment();
+        }, child: Text("increment"))
+      ],
+    ),);
   }
-}
-
-class Student{
-
-  // var name= "Tom".obs; //individual value is reactive 
-  // var age =25.obs;
-
-  var name;
-  var age;
-
-  Student({ this.name, this.age});
 }
