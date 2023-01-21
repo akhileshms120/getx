@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class HomeScreen extends GetView<CountControler> {
+class HomeScreen extends GetWidget<CountControler> {
   TextEditingController textController =TextEditingController();
 
   var storage=GetStorage();
@@ -37,7 +37,8 @@ class HomeScreen extends GetView<CountControler> {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(CountControler());
+    //Get.put(CountControler());
+    Get.create(() => CountControler());  //diffrent instances
     return Scaffold(
       appBar: AppBar(
         title: Text("GetView"),
